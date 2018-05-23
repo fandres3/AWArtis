@@ -1,6 +1,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AWArtis.Views;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace AWArtis
@@ -11,8 +12,9 @@ namespace AWArtis
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
-		}
+            //MainPage = new MainPage();
+            MainPage = new ArticuView();
+        }
 
 		protected override void OnStart ()
 		{
