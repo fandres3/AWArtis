@@ -9,7 +9,9 @@ namespace AWArtis
 {
 	public partial class MainPage : ContentPage
 	{
-		public MainPage()
+        bool result;
+
+        public MainPage()
 		{
 			InitializeComponent();
 
@@ -25,6 +27,14 @@ namespace AWArtis
 
         }
 
-      
+        async private void OnToolbarItemClicked(object sender, EventArgs args)
+        {
+            ToolbarItem toolbarItem = (ToolbarItem)sender;
+            if (toolbarItem.Text == "Configuración") {
+                await Navigation.PushAsync(new Views.Page1());
+            }
+        }
+
+
     }
 }

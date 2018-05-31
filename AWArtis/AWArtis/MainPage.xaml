@@ -13,4 +13,21 @@
            VerticalOptions="CenterAndExpand"></Button>
     </StackLayout>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="edit" Order="Primary" Clicked="OnToolbarItemClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="baseline_more_vert_white_24.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Otro" Order="Secondary" Clicked="OnToolbarItemClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="baseline_more_vert_white_18.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Configuración" Order="Secondary" Clicked="OnToolbarItemClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="baseline_more_vert_white_18.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 </ContentPage>
