@@ -5,10 +5,12 @@
              x:Class="AWArtis.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
+        <Button Text="Buscar" x:Name="BtnBuscar" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand"></Button>
+        <Button Text="Leer código" x:Name="BtnLeerCodigo"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand"></Button>
     </StackLayout>
 
 </ContentPage>

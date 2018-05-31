@@ -17,10 +17,6 @@ namespace AWArtis.Views
         {
 			InitializeComponent ();
 		}
-
-        private void InitializeComponent()
-        {
-            //throw new NotImplementedException();
-        }
+             
     }
 }

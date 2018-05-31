@@ -12,6 +12,19 @@ namespace AWArtis
 		public MainPage()
 		{
 			InitializeComponent();
-		}
-	}
+
+            BtnBuscar.Clicked += async (sender, args) =>
+            {
+                await Navigation.PushAsync(new Views.Page1());
+            };
+
+            BtnLeerCodigo.Clicked += async (sender, args) =>
+            {
+                await Navigation.PushAsync(new Views.Page1());
+            };
+
+        }
+
+      
+    }
 }
