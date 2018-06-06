@@ -16,6 +16,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ActicuDataAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -57,5 +59,8 @@
     <Page Include="$(MSBuildThisFileDirectory)Views\View1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)INFOS\LEEME.txt" />
   </ItemGroup>
 </Project>

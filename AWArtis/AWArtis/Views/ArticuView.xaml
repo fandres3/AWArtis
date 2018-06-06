@@ -3,10 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AWArtis.Views.ArticuView">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Beige">
-        <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="ArticusView"
+            ItemsSource="{Binding Path=Articu}"
+            ListView.RowHeight="150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Entry Text="{Binding Id}" IsEnabled="False"/>
+                            <Entry Text="{Binding Art_cod}" />
+                            <Entry Text="{Binding Art_des}"/>
+                            <Entry Text="{Binding Art_preven1}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

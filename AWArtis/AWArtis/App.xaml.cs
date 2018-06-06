@@ -13,8 +13,8 @@ namespace AWArtis
 			InitializeComponent();
 
             //MainPage = new MainPage();
-            //MainPage = new Views.ArticuView();
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new Views.ArticuView();
+            //MainPage = new NavigationPage(new MainPage());
         }
 
 		protected override void OnStart ()
