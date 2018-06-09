@@ -16,16 +16,25 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AppSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AsyncLocks.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Articu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Sqlite\ISqliteService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Sqlite\IPathService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Sqlite\SqliteService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ArticuView.xaml.cs">
       <DependentUpon>ArticuView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -45,17 +54,21 @@
     <Page Include="$(MSBuildThisFileDirectory)ConfiguracionView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\ConfiguracionView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Page2.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\Page2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </EmbeddedResource>
     <Page Include="$(MSBuildThisFileDirectory)Views\TabbedPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\View1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Infos\LEEME.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Infos\" />
   </ItemGroup>
 </Project>

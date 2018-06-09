@@ -1,0 +1,6 @@
+﻿https://github.com/jsuarezruiz/Xamarin.Forms-Samples/tree/master/TodoSqlite/TodoSqlite/TodoSqlite
+
+https://somostechies.com/persistencia-de-datos-en-xamarin-usando-sqlite/#.WxOnLkiFNpg
+
+
+
