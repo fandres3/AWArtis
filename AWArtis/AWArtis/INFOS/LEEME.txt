@@ -1,2 +1,6 @@
 ﻿https://msdn.microsoft.com/en-us/magazine/mt736454.aspx
 
+https://codeburst.io/xamarin-list-view-guide-ac97bac5955a
+
+
+
