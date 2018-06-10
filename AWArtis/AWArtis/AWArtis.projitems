@@ -16,14 +16,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Services\ActicuDataAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ActicusDataAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Articu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ArticuView.xaml.cs">
-      <DependentUpon>ArticuView.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ArticusPage.xaml.cs">
+      <DependentUpon>ArticusPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Page1.xaml.cs">
@@ -32,7 +32,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticuView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticusPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

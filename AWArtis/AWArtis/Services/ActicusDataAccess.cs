@@ -8,6 +8,7 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using AWArtis.Models;
+using System.IO;
 
 namespace AWArtis.Services
 {
@@ -29,6 +30,8 @@ namespace AWArtis.Services
             if (!database.Table<Articu>().Any())
             {
                 AddNewCustomer();
+                SaveAllArticus();
+             
             }
         }
         public void AddNewCustomer()
@@ -40,16 +43,23 @@ namespace AWArtis.Services
                   Art_des="descripcion a1",
                   Art_preven1 = 33.33
               });
+            this.Articus.
+             Add(new Articu
+             {
+                 Art_cod = "A2",
+                 Art_des = "de22222scripcion a2",
+                 Art_preven1 = 22.02
+             });
         }
         // Use LINQ to query and filter data
-        public IEnumerable<Articu> GetFilteredCustomers(string codigo)
+        public IEnumerable<Articu> GetFilteredArticus(string codigo)
         {
             // Use locks to avoid database collitions
             lock (collisionLock)
             {
-                var query = from cust in database.Table<Articu>()
-                            where cust.Art_cod == codigo
-                            select cust;
+                var query = from art in database.Table<Articu>()
+                            where art.Art_cod == codigo
+                            select art;
                 return query.AsEnumerable();
             }
         }
@@ -60,7 +70,7 @@ namespace AWArtis.Services
             {
                 return database.
                   Query<Articu>
-                  ("SELECT * FROM Articu WHERE art_cod = 'A1'").AsEnumerable();
+                  ("SELECT * FROM Articu").AsEnumerable();
             }
         }
         public Articu GetArticu(string codigo)
@@ -104,9 +114,9 @@ namespace AWArtis.Services
                 }
             }
         }
-        public int DeleteCustomer(Articu customerInstance)
+        public int DeleteArticu(Articu articuInstance)
         {
-            var id = customerInstance.Id;
+            var id = articuInstance.Id;
             if (id != 0)
             {
                 lock (collisionLock)
@@ -114,10 +124,10 @@ namespace AWArtis.Services
                     database.Delete<Articu>(id);
                 }
             }
-            this.Articus.Remove(customerInstance);
+            this.Articus.Remove(articuInstance);
             return id;
         }
-        public void DeleteAllCustomers()
+        public void DeleteAllArticus()
         {
             lock (collisionLock)
             {

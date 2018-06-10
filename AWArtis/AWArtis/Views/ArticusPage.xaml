@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AWArtis.Views.ArticuView">
+             x:Class="AWArtis.Views.ArticusPage">
     <ContentPage.Content>
+        <StackLayout>
         <ListView x:Name="ArticusView"
-            ItemsSource="{Binding Path=Articu}"
+            ItemsSource="{Binding Path=Articus}"
             ListView.RowHeight="150">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -19,5 +20,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" 
+               Priority="0" Order="Secondary" />
+        <ToolbarItem Name="Remove"
+               Priority="1" Order="Secondary" />
+        <ToolbarItem Name="Remove all"
+               Priority="2" Order="Secondary" />
+        <ToolbarItem Name="Save"
+               Priority="3" Order="Secondary" />
+    </ContentPage.ToolbarItems>
 </ContentPage>

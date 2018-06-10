@@ -1,6 +1,6 @@
-﻿https://github.com/jsuarezruiz/Xamarin.Forms-Samples/tree/master/TodoSqlite/TodoSqlite/TodoSqlite
+﻿https://msdn.microsoft.com/en-us/magazine/mt736454.aspx
 
-https://somostechies.com/persistencia-de-datos-en-xamarin-usando-sqlite/#.WxOnLkiFNpg
+https://codeburst.io/xamarin-list-view-guide-ac97bac5955a
 
 
 
