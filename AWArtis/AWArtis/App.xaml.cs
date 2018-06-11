@@ -15,8 +15,8 @@ namespace AWArtis
 
 
             //MainPage = new MainPage();
-            MainPage = new Views.ArticusPage();
-            //MainPage = new NavigationPage(new MainPage());
+            //MainPage = new Views.ArticusPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
 		protected override void OnStart ()
