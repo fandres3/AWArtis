@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AWArtis"
              x:Class="AWArtis.MainPage">
-
+    <StackLayout>
+    <StackLayout>
+        <Entry x:Name="entryCodigo" Completed="OnCodigoCompleted" />
+    </StackLayout>
     <StackLayout>
         <Button Text="Buscar" x:Name="BtnBuscar" 
            HorizontalOptions="CenterAndExpand"
@@ -12,7 +15,7 @@
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand"></Button>
     </StackLayout>
-
+    </StackLayout>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="edit" Order="Primary" Clicked="OnToolbarItemClicked">
             <ToolbarItem.Icon>

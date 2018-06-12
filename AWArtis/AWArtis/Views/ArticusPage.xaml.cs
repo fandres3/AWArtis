@@ -15,10 +15,11 @@ namespace AWArtis.Views
     public partial class ArticusPage : ContentPage
 	{
         private ArticusDataAccess dataAccess;
-
-        public ArticusPage ()
+        private string _codigoArticulo;
+        public ArticusPage (String codigoArticulo)
         {
 			InitializeComponent ();
+            _codigoArticulo = codigoArticulo;
             this.dataAccess = new ArticusDataAccess();
         }
 
@@ -29,7 +30,11 @@ namespace AWArtis.Views
             // The instance of CustomersDataAccess
             // is the data binding source
             //this.BindingContext = this.dataAccess.GetFilteredArticus();
-            this.BindingContext = this.dataAccess;
+            if (_codigoArticulo != null)
+            {
+                this.BindingContext = this.dataAccess.GetFilteredArticus(_codigoArticulo);
+            }
+            //this.BindingContext = this.dataAccess;
         }
 
     }

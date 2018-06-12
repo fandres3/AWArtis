@@ -52,25 +52,36 @@ namespace AWArtis.Services
              });
         }
         // Use LINQ to query and filter data
+        //public IEnumerable<Articu> GetFilteredArticus()
+        //{
+        //    // Use locks to avoid database collitions
+        //    lock (collisionLock)
+        //    {
+        //        //var query = from art in database.Table<Articu>()
+        //        //            where art.Art_cod == codigo
+        //        //            select art;
+        //        //return query.AsEnumerable();
+        //    }
+        //}
+        // Use SQL queries against data
         public IEnumerable<Articu> GetFilteredArticus(string codigo)
         {
-            // Use locks to avoid database collitions
             lock (collisionLock)
             {
-                var query = from art in database.Table<Articu>()
-                            where art.Art_cod == codigo
-                            select art;
-                return query.AsEnumerable();
-            }
-        }
-        // Use SQL queries against data
-        public IEnumerable<Articu> GetFilteredArticus()
-        {
-            lock (collisionLock)
-            {
+                IEnumerable<Articu> z;
+                z = database.
+                  Query<Articu>
+                  ("SELECT * FROM Articu WHERE Art_cod LIKE 'A1%'").AsEnumerable();
+                int result = 0;
+                using (IEnumerator<Articu> enumerator = z.GetEnumerator())
+                {
+                    while (enumerator.MoveNext())
+                        result++;
+                }
+                int a = result;
                 return database.
                   Query<Articu>
-                  ("SELECT * FROM Articu").AsEnumerable();
+                  ("SELECT * FROM Articu WHERE Art_cod='A1'").AsEnumerable();
             }
         }
         public Articu GetArticu(string codigo)

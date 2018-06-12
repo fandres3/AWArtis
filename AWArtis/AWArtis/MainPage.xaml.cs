@@ -17,12 +17,12 @@ namespace AWArtis
 
             BtnBuscar.Clicked += async (sender, args) =>
             {
-                await Navigation.PushAsync(new Views.BuscarPage());
+                await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text));
             };
 
             BtnLeerCodigo.Clicked += async (sender, args) =>
             {
-                await Navigation.PushAsync(new Views.BuscarPage());
+                await Navigation.PushAsync(new Views.Page1());
             };
 
         }
@@ -31,8 +31,14 @@ namespace AWArtis
         {
             ToolbarItem toolbarItem = (ToolbarItem)sender;
             if (toolbarItem.Text == "Configuración") {
-                await Navigation.PushAsync(new Views.BuscarPage());
+                await Navigation.PushAsync(new Views.Page1());
             }
+        }
+
+        async private void OnCodigoCompleted(object sender, TextChangedEventArgs args)
+        {
+             await Navigation.PushAsync(new Views.ArticusPage ( entryCodigo.Text));
+           
         }
 
 
