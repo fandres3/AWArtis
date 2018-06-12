@@ -6,10 +6,10 @@
 
     <StackLayout>
         <Button Text="Buscar" x:Name="BtnBuscar" 
-           HorizontalOptions="Center"
+           HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand"></Button>
         <Button Text="Leer código" x:Name="BtnLeerCodigo"
-           HorizontalOptions="Center"
+           HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand"></Button>
     </StackLayout>
 

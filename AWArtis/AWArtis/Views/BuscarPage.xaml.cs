@@ -13,14 +13,14 @@ namespace AWArtis.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 
-    public partial class Page1 : ContentPage
+    public partial class BuscarPage : ContentPage
 	{
         Articu arti1 = new Articu { Art_cod = "11111", Art_des = "descri 111111", Art_preven1 = 89.10 };
         Articu arti2 = new Articu { Art_cod = "2222222", Art_des = "descri 2222", Art_preven1 = 22.10 };
         Articu arti3 = new Articu { Art_cod = "33333", Art_des = "descri 33333", Art_preven1 = 33.10 };
        
 
-        public Page1 ()
+        public BuscarPage()
 		{
 			InitializeComponent ();
             var Articulos = new ObservableCollection<Articu>() { arti1, arti2, arti3 };

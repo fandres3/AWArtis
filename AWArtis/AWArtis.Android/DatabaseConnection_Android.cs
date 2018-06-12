@@ -27,8 +27,15 @@ namespace AWArtis.Droid
              // SpecialFolder.MyDocuments), dbName);
 
             var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, dbName);
+            try
+            {
+                return new SQLiteConnection(path);
+            }
+            catch
+            {
+                return null;
+            }
 
-            return new SQLiteConnection(path);
         }
     }
 }
