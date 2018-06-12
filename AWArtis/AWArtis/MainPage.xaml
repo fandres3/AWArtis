@@ -6,7 +6,8 @@
     <StackLayout>
     <StackLayout>
         <Entry x:Name="entryCodigo" Completed="OnCodigoCompleted" />
-    </StackLayout>
+        <Entry x:Name="entryDescripcion" Completed="OnDescripcionCompleted" />
+        </StackLayout>
     <StackLayout>
         <Button Text="Buscar" x:Name="BtnBuscar" 
            HorizontalOptions="CenterAndExpand"
