@@ -6,16 +6,15 @@
         <StackLayout>
         <ListView x:Name="ArticusView"
             ItemsSource="{Binding Path=Articus}"
-            ListView.RowHeight="150">
+            HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Entry Text="{Binding Id}" IsEnabled="False"/>
-                            <Entry Text="{Binding Art_cod}" />
-                            <Entry Text="{Binding Art_des}"/>
-                            <Entry Text="{Binding Art_preven1}"/>
-                        </StackLayout>
+                        <Grid>
+                            <Label Text="{Binding Art_cod}" FontSize="Medium" />
+                            <Label Grid.Column="1" Text="{Binding Art_des}" FontSize="Medium"/>
+                            <Label Grid.Column="2" Text="{Binding Art_preven1}" FontSize="Medium" />
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

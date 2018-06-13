@@ -22,7 +22,7 @@ namespace AWArtis
 
             BtnLeerCodigo.Clicked += async (sender, args) =>
             {
-                await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text));
+                await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text,entryDescripcion.Text));
             };
 
         }
@@ -31,7 +31,7 @@ namespace AWArtis
         {
             ToolbarItem toolbarItem = (ToolbarItem)sender;
             if (toolbarItem.Text == "Configuración") {
-                await Navigation.PushAsync(new Views.Page1());
+          //      await Navigation.PushAsync(new Views.Page1());
             }
         }
 
