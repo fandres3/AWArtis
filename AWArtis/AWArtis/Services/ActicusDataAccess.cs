@@ -52,38 +52,40 @@ namespace AWArtis.Services
              });
         }
         // Use LINQ to query and filter data
-        //public IEnumerable<Articu> GetFilteredArticus()
+        //public IEnumerable<Articu> GetFilteredArticus(string codigo)
         //{
         //    // Use locks to avoid database collitions
         //    lock (collisionLock)
         //    {
-        //        //var query = from art in database.Table<Articu>()
-        //        //            where art.Art_cod == codigo
-        //        //            select art;
-        //        //return query.AsEnumerable();
+        //        var query = from art in database.Table<Articu>()
+        //                    where art.Art_cod == codigo
+        //                    select art;
+        //        return query.AsEnumerable();
         //    }
         //}
         // Use SQL queries against data
-        public IEnumerable<Articu> GetFilteredArticus(string codigo)
+        public IEnumerable<Articu> GetFilteredArticus(string codigo,string descripcion)
         {
             lock (collisionLock)
             {
-                IEnumerable<Articu> z;
-                z = database.
-                  Query<Articu>
-                  ("SELECT * FROM Articu WHERE Art_cod LIKE 'A1%'").AsEnumerable();
-                int result = 0;
-                using (IEnumerator<Articu> enumerator = z.GetEnumerator())
+                if (codigo != "")
                 {
-                    while (enumerator.MoveNext())
-                        result++;
+                    return database.
+   Query<Articu>
+   ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
                 }
-                int a = result;
-                return database.
-                  Query<Articu>
-                  ("SELECT * FROM Articu WHERE Art_cod='A1'").AsEnumerable();
+
+                if (descripcion != "")
+                {
+                    return database.
+   Query<Articu>
+   ("SELECT * FROM Articu where Art_des LIKE '" + descripcion + "%' ORDER BY Art_des").AsEnumerable();
+                }
+                return null;
+
             }
         }
+
         public Articu GetArticu(string codigo)
         {
             lock (collisionLock)
