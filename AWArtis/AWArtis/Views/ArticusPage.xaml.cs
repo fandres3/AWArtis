@@ -27,7 +27,7 @@ namespace AWArtis.Views
             // The instance of CustomersDataAccess
             // is the data binding source
             //this.BindingContext = this.dataAccess.GetFilteredArticus();
-            if ((_codigoArticulo != null) || (_descripcionArticulo !=null))
+            if ((_codigoArticulo != "") || (_descripcionArticulo != ""))
             {
                 // this.BindingContext = this.dataAccess.GetFilteredArticus(_codigoArticulo);
                 ArticusView.ItemsSource = this.dataAccess.GetFilteredArticus(_codigoArticulo,_descripcionArticulo);
