@@ -24,8 +24,9 @@ namespace AWArtis.Views
         public BarcodeScanner ()
 		{
 			InitializeComponent ();
-           
-                var options = new MobileBarcodeScanningOptions
+            GlobalVariables._codigoBarras = null;
+
+            var options = new MobileBarcodeScanningOptions
                 {
                     AutoRotate = false,
                     UseFrontCameraIfAvailable = false,
@@ -52,15 +53,16 @@ namespace AWArtis.Views
 
                     BarcodeReaded?.Invoke(this, result.Text);
 
-                    // Navigate away
-                    await Navigation.PopAsync();
+                        // Navigate away
+                        await Navigation.PopAsync();
+                        MessagingCenter.Send<Views.BarcodeScanner, string>(this, "BarcodeRead", result.Text);
 
-                        if (result.Text != null)
-                        {
-                            GlobalVariables._codigoBarras = result.Text;
-                            await Navigation.PushAsync(new Views.ArticusPage(result.Text, null));
-                        }
 
+                        //if (result.Text != null)
+                        //{
+                        //    GlobalVariables._codigoBarras = result.Text;
+                        //    // await Navigation.PushAsync(new Views.ArticusPage(result.Text, null));
+                        //}
 
 
                     });

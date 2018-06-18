@@ -5,21 +5,20 @@
              x:Class="AWArtis.MainPage">
    
     <StackLayout>
-    <StackLayout>
-        <Entry x:Name="entryCodigo" Completed="OnCodigoCompleted" />
-        <Entry x:Name="entryDescripcion" Completed="OnDescripcionCompleted" />
+        <StackLayout Margin="40,95" >
+        <Entry x:Name="entryCodigo" Placeholder="Código..." Completed="OnCodigoCompleted"/>
+        <Entry x:Name="entryDescripcion" Placeholder="Descripción..." Completed="OnDescripcionCompleted" Margin="0,30" />
         </StackLayout>
-    <StackLayout>
-        <Button Text="Buscar" x:Name="BtnBuscar" 
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Button Text="Buscar" x:Name="BtnBuscar" FontSize="Large"  
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand" Clicked="btnBuscar_Clicked"></Button>
-        <Button Text="Leer código" x:Name="BtnLeerCodigo"
+        </StackLayout>
+        <StackLayout  VerticalOptions="CenterAndExpand">
+            <Button Text="Leer código" x:Name="BtnLeerCodigo" FontSize="Large"
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand" Clicked="btnLeerCodigo_Clicked" ></Button>
-            <Button Text="Leer2 código" x:Name="BtnPrueba"
-           HorizontalOptions="CenterAndExpand"
-           VerticalOptions="CenterAndExpand" Clicked="btnPrueba_Clicked" ></Button>
-        </StackLayout>
+              </StackLayout>
     </StackLayout>
     
     <ContentPage.ToolbarItems>

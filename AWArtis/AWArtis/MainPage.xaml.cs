@@ -19,54 +19,17 @@ namespace AWArtis
         {
             await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
         }
-        async void btnPrueba_Clicked(object sender, EventArgs e)
+        async void btnLeerCodigo_Clicked(object sender, EventArgs e)
         {
+
             entryCodigo.Text = "";
             entryDescripcion.Text = "";
             await Navigation.PushAsync(new Views.BarcodeScanner());
-          
-        }
-
-        async void btnLeerCodigo_Clicked(object sender, EventArgs e)
-        {
-            entryCodigo.Text = null;
-            entryDescripcion.Text = null;
-            // ---- Información ZXing
-            // http://slackshotindustries.blogspot.com/2013/04/creating-custom-overlays-in-xzing.html
-            // https://github.com/icebeam7/ScannerZXing
-            // https://github.com/Redth/ZXing.Net.Mobile/blob/master/readme.md
-            // ----
-
-            var overlay = new ZXingDefaultOverlay
-            {
-                ShowFlashButton = true,
-                BindingContext = this,
-                //TopText = "I'm at the top",
-                // BottomText = "I'm at the bottom",
-                
-            };
-
-
-            //'overlay.BindingContext = overlay;
-            var pagina = new ZXingScannerPage(null, overlay);
-            
-
-            await Navigation.PushAsync(pagina);
-
-            pagina.OnScanResult += (resultado) =>
-            {
-                pagina.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PopAsync();
-                    entryCodigo.Text = resultado.Text;
-                    if (resultado.Text != null)
-                    {
-                        await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
-                    }
-                });
-            };
+            // Vuelve a aquí antes de haber leído el barcode
+            // Para evitar retornos, una vez que BarcodeScanner lee el barcode y haber PopAsync de su Page
+            // Lanza un    MessagingCenter.Send<Views.BarcodeScanner, string>(this, "BarcodeRead", result.Text);
+            // Esto hace que MainPage en OnAppearing recoja el barcode con
+            //            MessagingCenter.Subscribe<Views.BarcodeScanner, string>(this, "BarcodeRead", (sender, arg) => ....
         }
 
 
@@ -99,6 +62,30 @@ namespace AWArtis
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Views.BarcodeScanner, string>(this, "BarcodeRead", (sender, arg) => {
+                // arg should have your barcode...
+                if (arg != null)
+                {
+
+                    zz(arg);
+                    arg = null;
+                }
+
+              
+            });
+        }
+
+        async private void zz(String barcode)
+        {
+            if (GlobalVariables._IsBusy) return; // Evita que se lance varias veces ArticusPage
+            GlobalVariables._IsBusy = true;
+            entryCodigo.Text = barcode;
+            await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
+
+        }
 
     }
 }

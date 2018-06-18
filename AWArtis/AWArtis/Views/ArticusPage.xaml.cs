@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AWArtis.Models;
 
 
 namespace AWArtis.Views
@@ -31,9 +32,15 @@ namespace AWArtis.Views
             {
                 // this.BindingContext = this.dataAccess.GetFilteredArticus(_codigoArticulo);
                 ArticusView.ItemsSource = this.dataAccess.GetFilteredArticus(_codigoArticulo,_descripcionArticulo);
+                GlobalVariables._IsBusy = false;
             }
            
             //this.BindingContext = this.dataAccess;
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+        
         }
 
     }
