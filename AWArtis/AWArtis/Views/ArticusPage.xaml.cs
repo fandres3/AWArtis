@@ -32,7 +32,7 @@ namespace AWArtis.Views
             {
                 // this.BindingContext = this.dataAccess.GetFilteredArticus(_codigoArticulo);
                 ArticusView.ItemsSource = this.dataAccess.GetFilteredArticus(_codigoArticulo,_descripcionArticulo);
-                GlobalVariables._IsBusy = false;
+                //GlobalVariables._IsBusy = false;
             }
            
             //this.BindingContext = this.dataAccess;
@@ -40,7 +40,7 @@ namespace AWArtis.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-        
+            GlobalVariables._IsBusy = false;
         }
 
     }

@@ -31,10 +31,11 @@ namespace AWArtis.Views
                     AutoRotate = false,
                     UseFrontCameraIfAvailable = false,
                     TryHarder = true,
-                    PossibleFormats = new List<ZXing.BarcodeFormat>
-                {
-                   ZXing.BarcodeFormat.EAN_8, ZXing.BarcodeFormat.EAN_13
-                }
+                    //PossibleFormats = new List<ZXing.BarcodeFormat>
+                    //{
+                    //    ZXing.BarcodeFormat.EAN_8, ZXing.BarcodeFormat.EAN_13, 
+                    //    ZXing.BarcodeFormat.CODE_39,ZXing.BarcodeFormat.All_1D
+                    //}
                 };
 
                  zxing = new ZXingScannerView

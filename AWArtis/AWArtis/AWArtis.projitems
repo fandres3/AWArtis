@@ -62,11 +62,8 @@
     <Page Include="$(MSBuildThisFileDirectory)Views\Page2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\TabbedPage1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)INFOS\LEEME.txt" />
+    <None Include="$(MSBuildThisFileDirectory)INFOS\LEEME.txt" />
   </ItemGroup>
 </Project>

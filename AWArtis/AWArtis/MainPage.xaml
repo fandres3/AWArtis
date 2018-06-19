@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AWArtis"
              x:Class="AWArtis.MainPage">
-   
-    <StackLayout>
-        <StackLayout Margin="40,95" >
-        <Entry x:Name="entryCodigo" Placeholder="Código..." Completed="OnCodigoCompleted"/>
-        <Entry x:Name="entryDescripcion" Placeholder="Descripción..." Completed="OnDescripcionCompleted" Margin="0,30" />
+
+    <StackLayout Margin="10,60,3,5" >
+        <StackLayout Orientation="Horizontal" >
+            <Entry x:Name="entryCodigo" Placeholder="Código..." Completed="OnCodigoCompleted" MaxLength="20" HorizontalOptions="FillAndExpand"/>
+            <Button Clicked="btnBorraCodigo_Clicked" HorizontalOptions="End" Image="baseline_more_vert_24" ></Button>
         </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="entryDescripcion" Placeholder="Descripción..." Completed="OnDescripcionCompleted" MaxLength="20" HorizontalOptions="FillAndExpand"/>
+            <Button Clicked="btnBorraDescripcion_Clicked" HorizontalOptions="End"></Button>
+        </StackLayout>
+        
     <StackLayout VerticalOptions="CenterAndExpand">
         <Button Text="Buscar" x:Name="BtnBuscar" FontSize="Large"  
            HorizontalOptions="CenterAndExpand"

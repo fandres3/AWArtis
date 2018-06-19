@@ -19,6 +19,7 @@ namespace AWArtis
         {
             await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
         }
+
         async void btnLeerCodigo_Clicked(object sender, EventArgs e)
         {
 
@@ -30,6 +31,16 @@ namespace AWArtis
             // Lanza un    MessagingCenter.Send<Views.BarcodeScanner, string>(this, "BarcodeRead", result.Text);
             // Esto hace que MainPage en OnAppearing recoja el barcode con
             //            MessagingCenter.Subscribe<Views.BarcodeScanner, string>(this, "BarcodeRead", (sender, arg) => ....
+        }
+
+        void btnBorraCodigo_Clicked(object sender, EventArgs e)
+        {
+            entryCodigo.Text = string.Empty;
+        }
+
+        void btnBorraDescripcion_Clicked(object sender, EventArgs e)
+        {
+            entryDescripcion.Text = string.Empty;
         }
 
 
@@ -44,8 +55,9 @@ namespace AWArtis
         async private void OnToolbarItemClicked(object sender, EventArgs args)
         {
             ToolbarItem toolbarItem = (ToolbarItem)sender;
-            if (toolbarItem.Text == "Configuración") {
-          //      await Navigation.PushAsync(new Views.Page1());
+            if (toolbarItem.Text == "Configuración")
+            {
+                      await Navigation.PushAsync(new Views.ArticusPage("",""));
             }
         }
 

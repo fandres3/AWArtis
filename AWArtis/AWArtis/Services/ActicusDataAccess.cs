@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using SQLite;
-using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
@@ -68,14 +67,14 @@ namespace AWArtis.Services
         {
             lock (collisionLock)
             {
-                if (codigo != "")
+                if (codigo != null)
                 {
                     return database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
                 }
 
-                if (descripcion != "")
+                if (descripcion != null)
                 {
                     return database.
    Query<Articu>
