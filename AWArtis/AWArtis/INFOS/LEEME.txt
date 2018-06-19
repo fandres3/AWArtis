@@ -4,3 +4,8 @@ https://codeburst.io/xamarin-list-view-guide-ac97bac5955a
 
 
 
+            // ---- Información ZXing
+            // http://slackshotindustries.blogspot.com/2013/04/creating-custom-overlays-in-xzing.html
+            // https://github.com/icebeam7/ScannerZXing
+            // https://github.com/Redth/ZXing.Net.Mobile/blob/master/readme.md
+            // ----
