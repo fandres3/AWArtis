@@ -35,12 +35,12 @@ namespace AWArtis
 
         void btnBorraCodigo_Clicked(object sender, EventArgs e)
         {
-            entryCodigo.Text = string.Empty;
+            entryCodigo.Text = "";
         }
 
         void btnBorraDescripcion_Clicked(object sender, EventArgs e)
         {
-            entryDescripcion.Text = string.Empty;
+            entryDescripcion.Text = "";
         }
 
 

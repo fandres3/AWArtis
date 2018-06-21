@@ -67,14 +67,14 @@ namespace AWArtis.Services
         {
             lock (collisionLock)
             {
-                if (codigo != null)
+                if (codigo != "")
                 {
                     return database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
                 }
 
-                if (descripcion != null)
+                if (descripcion != "")
                 {
                     return database.
    Query<Articu>
