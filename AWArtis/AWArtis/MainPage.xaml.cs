@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 using AWArtis.Models;
+using AWArtis.Services;
 
 namespace AWArtis
 {
@@ -95,6 +96,18 @@ namespace AWArtis
             if (GlobalVariables._IsBusy) return; // Evita que se lance varias veces ArticusPage
             GlobalVariables._IsBusy = true;
             entryCodigo.Text = barcode;
+
+            ArticusDataAccess busca;
+            busca = new ArticusDataAccess();
+            Articu art = busca.GetArticu("a44");
+            if (busca.Articus.Count == 1)
+            {
+                DisplayAlert("1", "1", "1"); }
+            else
+            {
+                DisplayAlert("mas", "mas", "mas");
+            }
+        
             await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
 
         }
