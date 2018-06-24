@@ -4,7 +4,7 @@
              x:Class="AWArtis.Views.ArticusPage">
     <ContentPage.Content>
         <StackLayout>
-        <ListView x:Name="ArticusView"
+        <ListView x:Name="ArticusView" 
             ItemsSource="{Binding Path=Articus}"
             HasUnevenRows="True">
             <ListView.ItemTemplate>
