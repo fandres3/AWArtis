@@ -13,6 +13,8 @@ namespace AWArtis.Views
         private ArticusDataAccess dataAccess;
         private string _codigoArticulo;
         private string _descripcionArticulo;
+        private bool isRowEven;
+
         public ArticusPage (String codigoArticulo, String descripcionArticulo)
         {
 			InitializeComponent ();
@@ -42,6 +44,26 @@ namespace AWArtis.Views
             base.OnDisappearing();
             GlobalVariables._IsBusy = false;
         }
+
+        private void Cell_OnAppearing(object sender, EventArgs e)
+        {
+            // Alternate row color
+            // https://forums.xamarin.com/discussion/27896/listview-alternating-row-background-colors
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null && viewCell.View.BackgroundColor == default(Color))
+            {
+                if (this.isRowEven)
+                {
+                    viewCell.View.BackgroundColor = Color.White;
+                }
+                else
+                {
+                    viewCell.View.BackgroundColor = Color.LightGray;
+                }
+            }
+            this.isRowEven = !this.isRowEven;
+        }
+              
 
     }
 }
