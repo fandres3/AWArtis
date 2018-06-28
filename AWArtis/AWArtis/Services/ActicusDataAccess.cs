@@ -73,7 +73,7 @@ namespace AWArtis.Services
                 {
                     SeleccionArticus = database.
    Query<Articu>
-   ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
+   ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' OR Art_cod1 LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
                    
                     return SeleccionArticus;
                   

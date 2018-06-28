@@ -53,6 +53,18 @@ namespace AWArtis.Models
             }
         }
 
+        private string _art_cod1;
+        [NotNull]
+        public string Art_cod1
+        {
+            get { return _art_cod1; }
+            set
+            {
+                this._art_cod1 = value;
+                OnPropertyChanged(nameof(Art_cod1));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
