@@ -17,6 +17,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\GlobalVariables.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ArticusPageDetalle.xaml.cs">
+      <DependentUpon>ArticusPageDetalle.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\BarcodeScanner.xaml.cs">
       <DependentUpon>BarcodeScanner.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -56,6 +60,10 @@
     <Page Include="$(MSBuildThisFileDirectory)ConfiguracionView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticusPageDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <Page Include="$(MSBuildThisFileDirectory)Views\LeerCodigoPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

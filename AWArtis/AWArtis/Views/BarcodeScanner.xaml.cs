@@ -56,7 +56,7 @@ namespace AWArtis.Views
 
                         // Navigate away
                         await Navigation.PopAsync();
-                        // Envia mensaje con el código de barras capturado
+                        // Código de barras leído. Envía Menssage a MainPage
                         MessagingCenter.Send<Views.BarcodeScanner, string>(this, "BarcodeRead", result.Text);
 
 

@@ -17,6 +17,8 @@ namespace AWArtis.Services
         private SQLiteConnection database;
         private static object collisionLock = new object();
         public ObservableCollection<Articu> Articus { get; set; }
+        public IEnumerable<Articu> SeleccionArticus;
+        public int CuantosArticus;
         public ArticusDataAccess()
         {
             database =
@@ -28,12 +30,12 @@ namespace AWArtis.Services
             // If the table is empty, initialize the collection
             if (!database.Table<Articu>().Any())
             {
-                AddNewCustomer();
+                AddNewArticu();
                 SaveAllArticus();
              
             }
         }
-        public void AddNewCustomer()
+        public void AddNewArticu()
         {
             this.Articus.
               Add(new Articu
@@ -69,16 +71,21 @@ namespace AWArtis.Services
             {
                 if (codigo != "")
                 {
-                    return database.
+                    SeleccionArticus = database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
+                   
+                    return SeleccionArticus;
+                  
                 }
 
                 if (descripcion != "")
                 {
-                    return database.
+                    SeleccionArticus = database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_des LIKE '" + descripcion + "%' ORDER BY Art_des").AsEnumerable();
+                   
+                    return SeleccionArticus;
                 }
                 return null;
 
