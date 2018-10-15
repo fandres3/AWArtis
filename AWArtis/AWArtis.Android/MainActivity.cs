@@ -7,6 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.IO;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
@@ -18,6 +21,9 @@ namespace AWArtis.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            AppCenter.Start("1a8a8216-5f7b-4dc1-ab4b-a84baebef54a",
+                   typeof(Analytics), typeof(Crashes));
+            
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

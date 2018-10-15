@@ -18,10 +18,10 @@ namespace AWArtis
         private ArticusDataAccess dataAccess;
         private IEnumerable<Articu> SeleccionArticus;
 
-        void btnBuscar_Clicked(object sender, EventArgs e)
+        async void btnBuscar_Clicked(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text));
-            Buscar();
+            await Buscar();
         }
 
         async void btnLeerCodigo_Clicked(object sender, EventArgs e)
