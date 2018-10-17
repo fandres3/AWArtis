@@ -22,11 +22,14 @@ namespace AWArtis.Droid
         public SQLiteConnection DbConnection()
         {
             var dbName = "AWBD1.db3";
-           // var path = Path.Combine(System.Environment.
+            // var path = Path.Combine(System.Environment.
             //  GetFolderPath(System.Environment.
-             // SpecialFolder.MyDocuments), dbName);
+            // SpecialFolder.MyDocuments), dbName);
 
-            var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, dbName);
+            //var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path , "AW/Gascon/"+ dbName);
+            //var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, dbName);
+            //var path = Path.Combine("/sdcard/AW/Gascon", dbName);
+            var path = Path.Combine("/storage/emulated/0/AW/Gascon", dbName);
             try
             {
                 return new SQLiteConnection(path);

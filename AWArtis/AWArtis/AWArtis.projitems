@@ -57,9 +57,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <Page Include="$(MSBuildThisFileDirectory)ConfiguracionView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ConfiguracionView.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticusPageDetalle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

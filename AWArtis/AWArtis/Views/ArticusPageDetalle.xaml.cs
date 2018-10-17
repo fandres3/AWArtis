@@ -12,6 +12,7 @@ namespace AWArtis.Views
     public partial class ArticusPageDetalle : ContentPage
     {
         private IEnumerable<Articu> _seleccionArticus;
+        private string v;
 
         public ArticusPageDetalle(IEnumerable<Articu> SeleccionArticus)
         {
@@ -20,6 +21,11 @@ namespace AWArtis.Views
             this.BindingContext = _seleccionArticus;
             ArticusViewDetalle.ItemsSource = _seleccionArticus;
             //this.dataAccess = new ArticusDataAccess();
+        }
+
+        public ArticusPageDetalle(string v)
+        {
+            this.v = v;
         }
 
         // An event that is raised when the page is shown

@@ -60,7 +60,7 @@ namespace AWArtis
             ToolbarItem toolbarItem = (ToolbarItem)sender;
             if (toolbarItem.Text == "Configuración")
             {
-                await Navigation.PushAsync(new Views.ArticusPage("", ""));
+                await Navigation.PushAsync(new Views.ConfiguracionView());
             }
         }
 
@@ -110,32 +110,36 @@ namespace AWArtis
         {
 
             SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
-            var z = SeleccionArticus.Count();
-            if (z == 1)
-            {
-                var vi = new Views.ArticusPageDetalle(SeleccionArticus)
+            if (SeleccionArticus != null)
+            { 
+                var z = SeleccionArticus.Count();
+                if (z == 1)
                 {
-                    BindingContext = SeleccionArticus
-                };
-                await Navigation.PushAsync(vi);
-                return;
-            }
+                    var vi = new Views.ArticusPageDetalle(SeleccionArticus)
+                    {
+                        BindingContext = SeleccionArticus
+                    };
+                    await Navigation.PushAsync(vi);
+                    return;
+                }
 
-            if (z > 0)
-            {
-                var vi = new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text)
+                if (z > 0)
                 {
-                    BindingContext = SeleccionArticus
-                };
-                await Navigation.PushAsync(vi);
-                return;
-            }
+                    var vi = new Views.ArticusPage(entryCodigo.Text, entryDescripcion.Text)
+                    {
+                        BindingContext = SeleccionArticus
+                    };
+                    await Navigation.PushAsync(vi);
+                    return;
+                }
 
-            if (z == 0)
-            {
-                await DisplayAlert("Aviso", "No existe", "OK");
+                if (z == 0)
+                {
+                    await DisplayAlert("Aviso", "No existe", "OK");
+                }
             }
             return;
+
         }
 
 }

@@ -21,10 +21,27 @@ namespace AWArtis.Services
         public int CuantosArticus;
         public ArticusDataAccess()
         {
-            database =
-              DependencyService.Get<IDatabaseConnection>().
-              DbConnection();
-            database.CreateTable<Articu>();
+            try
+            {
+                database =
+                  DependencyService.Get<IDatabaseConnection>().
+                  DbConnection();
+            }
+            catch (Exception)
+            {
+                //throw;
+                
+            }
+            try
+            {
+                database.CreateTable<Articu>();
+            }
+            catch (Exception)
+            {
+
+                throw; 
+            }
+         
             this.Articus =
               new ObservableCollection<Articu>(database.Table<Articu>());
             // If the table is empty, initialize the collection
@@ -41,13 +58,15 @@ namespace AWArtis.Services
               Add(new Articu
               {
                   Art_cod="A1",
-                  Art_des="descripcion a1",
-                  Art_preven1 = 33.33
+                  Art_cod1 = "",
+                  Art_des ="descripcion a1",
+                  Art_preven1 = 11.11
               });
             this.Articus.
              Add(new Articu
              {
                  Art_cod = "A2",
+                 Art_cod1 = "",
                  Art_des = "de22222scripcion a2",
                  Art_preven1 = 22.02
              });
