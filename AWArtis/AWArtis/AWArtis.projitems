@@ -39,6 +39,10 @@
       <DependentUpon>BuscarPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SettingsGeneralPage.xaml.cs">
+      <DependentUpon>SettingsGeneralPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArticusPage.xaml">
@@ -70,6 +74,10 @@
     <Page Include="$(MSBuildThisFileDirectory)Views\Page2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SettingsGeneralPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)INFOS\LEEME.txt" />

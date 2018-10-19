@@ -13,6 +13,7 @@ using AWArtis.Droid;
 using AWArtis.Services;
 using SQLite;
 using System.IO;
+using AWArtis.Models;
 
 [assembly: Xamarin.Forms.Dependency(typeof(DatabaseConnection_Android))]
 namespace AWArtis.Droid
@@ -21,7 +22,7 @@ namespace AWArtis.Droid
     {
         public SQLiteConnection DbConnection()
         {
-            var dbName = "AWBD1.db3";
+            //var dbName = "AWBD1.db3";
             // var path = Path.Combine(System.Environment.
             //  GetFolderPath(System.Environment.
             // SpecialFolder.MyDocuments), dbName);
@@ -29,10 +30,10 @@ namespace AWArtis.Droid
             //var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path , "AW/Gascon/"+ dbName);
             //var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, dbName);
             //var path = Path.Combine("/sdcard/AW/Gascon", dbName);
-            var path = Path.Combine("/storage/emulated/0/AW/Gascon", dbName);
+            //var path = Path.Combine("/storage/emulated/0/AW/Gascon", dbName);
             try
             {
-                return new SQLiteConnection(path);
+                return new SQLiteConnection(GlobalVariables._fileName);
             }
             catch
             {

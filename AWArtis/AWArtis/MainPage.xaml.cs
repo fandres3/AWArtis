@@ -9,6 +9,9 @@ using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 using AWArtis.Models;
 using AWArtis.Services;
+using System.IO;
+using AWArtis.Views;
+
 
 namespace AWArtis
 {
@@ -52,6 +55,24 @@ namespace AWArtis
         public MainPage()
         {
             InitializeComponent();
+
+            GlobalVariables._camino = App.Current.Properties["CaminoAFichero"] as string;
+            GlobalVariables._fichero = App.Current.Properties["Fichero"] as string;
+            GlobalVariables._fileName = Path.Combine(GlobalVariables._camino, GlobalVariables._fichero);
+            
+            if (!Directory.Exists(GlobalVariables._camino))
+            {
+                try
+                {
+                    Directory.CreateDirectory(GlobalVariables._camino);
+                }
+                catch (Exception)
+                {
+                    DisplayAlert("Aviso", "No puedo crear " + GlobalVariables._camino, "OK");
+                    return;
+                }
+                
+            }
             dataAccess = new ArticusDataAccess();
         }
 
@@ -60,7 +81,7 @@ namespace AWArtis
             ToolbarItem toolbarItem = (ToolbarItem)sender;
             if (toolbarItem.Text == "Configuración")
             {
-                await Navigation.PushAsync(new Views.ConfiguracionView());
+                await Navigation.PushAsync(new SettingsGeneralPage());
             }
         }
 

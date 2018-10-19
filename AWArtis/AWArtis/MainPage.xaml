@@ -6,11 +6,11 @@
 
      
     <StackLayout>
-        <StackLayout Margin="0,10">
+        <StackLayout Margin="0,50,0,10">
             <Image Source="logogascon.png"></Image>
         </StackLayout>
 
-        <StackLayout Margin="10,40,3,5"  Orientation="Horizontal" >
+        <StackLayout Margin="10,10,3,5"  Orientation="Horizontal" >
             <Entry x:Name="entryCodigo" Placeholder="Código..." Completed="OnCodigoCompleted" MaxLength="20" HorizontalOptions="FillAndExpand"/>
             <Button Clicked="btnBorraCodigo_Clicked" HorizontalOptions="End" Image="baseline_highlight_off_black_24.png" BackgroundColor="Transparent"></Button>
         </StackLayout>
@@ -24,7 +24,7 @@
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand" Clicked="btnBuscar_Clicked"></Button>
         </StackLayout>
-        <StackLayout  VerticalOptions="CenterAndExpand">
+        <StackLayout   Margin="40,20">
             <Button x:Name="BtnLeerCodigo" FontSize="Large"  Image="baseline_camera_alt_black_48.png" BackgroundColor="Transparent" 
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand" Clicked="btnLeerCodigo_Clicked" ></Button>
