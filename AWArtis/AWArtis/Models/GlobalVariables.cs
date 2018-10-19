@@ -8,9 +8,10 @@ namespace AWArtis.Models
     {
         public static String _codigoBarras;
         public static Boolean _IsBusy;
+        public static Boolean _Permisos;
 
-        public static String _camino;
-        public static String _fichero;
-        public static String _fileName;
+        public static String _Camino;
+        public static String _Fichero;
+        public static String _FileName;
     }
 }

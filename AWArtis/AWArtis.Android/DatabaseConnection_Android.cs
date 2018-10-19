@@ -33,7 +33,7 @@ namespace AWArtis.Droid
             //var path = Path.Combine("/storage/emulated/0/AW/Gascon", dbName);
             try
             {
-                return new SQLiteConnection(GlobalVariables._fileName);
+                return new SQLiteConnection(GlobalVariables._FileName);
             }
             catch
             {

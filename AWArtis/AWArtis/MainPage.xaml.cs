@@ -11,7 +11,8 @@ using AWArtis.Models;
 using AWArtis.Services;
 using System.IO;
 using AWArtis.Views;
-
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace AWArtis
 {
@@ -56,19 +57,24 @@ namespace AWArtis
         {
             InitializeComponent();
 
-            GlobalVariables._camino = App.Current.Properties["CaminoAFichero"] as string;
-            GlobalVariables._fichero = App.Current.Properties["Fichero"] as string;
-            GlobalVariables._fileName = Path.Combine(GlobalVariables._camino, GlobalVariables._fichero);
+
+            VerificaPermisos();
+            if (GlobalVariables._Permisos == false) return;
+            if (Device.Android == "Android") Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+
+            GlobalVariables._Camino = App.Current.Properties["CaminoAFichero"] as string;
+            GlobalVariables._Fichero = App.Current.Properties["Fichero"] as string;
+            GlobalVariables._FileName = Path.Combine(GlobalVariables._Camino, GlobalVariables._Fichero);
             
-            if (!Directory.Exists(GlobalVariables._camino))
+            if (!Directory.Exists(GlobalVariables._Camino))
             {
                 try
                 {
-                    Directory.CreateDirectory(GlobalVariables._camino);
+                    Directory.CreateDirectory(GlobalVariables._Camino);
                 }
                 catch (Exception)
                 {
-                    DisplayAlert("Aviso", "No puedo crear " + GlobalVariables._camino, "OK");
+                    DisplayAlert("Aviso", "No puedo crear " + GlobalVariables._Camino, "OK");
                     return;
                 }
                 
@@ -76,6 +82,40 @@ namespace AWArtis
             dataAccess = new ArticusDataAccess();
         }
 
+        async private void VerificaPermisos()
+        {
+            GlobalVariables._Permisos = false;
+            // --------------------
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Storage))
+                    {
+                        await DisplayAlert("Necesito permiso de almacenamiento", "Gunna need that location", "OK");
+                    }
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+                    //Best practice to always check that the key exists
+                    if (results.ContainsKey(Permission.Storage))
+                        status = results[Permission.Storage];
+                    GlobalVariables._Permisos = true;
+                }
+
+                 if (status != PermissionStatus.Unknown)
+                {
+                    await DisplayAlert("Permiso almacenamiento denegado", "No puedo continuar, inténtalo de nuevo.", "OK");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+            // --------------------
+
+        }
         async private void OnToolbarItemClicked(object sender, EventArgs args)
         {
             ToolbarItem toolbarItem = (ToolbarItem)sender;

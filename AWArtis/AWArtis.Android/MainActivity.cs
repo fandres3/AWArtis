@@ -10,7 +10,7 @@ using System.IO;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using Plugin.Permissions;
 
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
 
@@ -23,7 +23,9 @@ namespace AWArtis.Droid
         {
             AppCenter.Start("1a8a8216-5f7b-4dc1-ab4b-a84baebef54a",
                    typeof(Analytics), typeof(Crashes));
-            
+
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -49,26 +51,32 @@ namespace AWArtis.Droid
             Permission[] grantResults) {
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode,
                 permissions, grantResults);
+            // ---- Plugin de permisos https://github.com/jamesmontemagno/PermissionsPlugin
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            // ---- 
         }
 
     }
 
-        // readStream is the stream you need to read
-        // writeStream is the stream you want to write to
-        //private void ReadWriteStream(Stream readStream, Stream writeStream)
-       // {
-         //   int Length = 256;
-          //  Byte[] buffer = new Byte[Length];
-          //  int bytesRead = readStream.Read(buffer, 0, Length);
-          //  // write the required bytes
-          //  while (bytesRead > 0)
-           // {
-        //        writeStream.Write(buffer, 0, bytesRead);
-        //        bytesRead = readStream.Read(buffer, 0, Length);
-        //    }
-        //    readStream.Close();
-        //    writeStream.Close();
-        //}
-    }
+
+
+    // readStream is the stream you need to read
+    // writeStream is the stream you want to write to
+    //private void ReadWriteStream(Stream readStream, Stream writeStream)
+    // {
+    //   int Length = 256;
+    //  Byte[] buffer = new Byte[Length];
+    //  int bytesRead = readStream.Read(buffer, 0, Length);
+    //  // write the required bytes
+    //  while (bytesRead > 0)
+    // {
+    //        writeStream.Write(buffer, 0, bytesRead);
+    //        bytesRead = readStream.Read(buffer, 0, Length);
+    //    }
+    //    readStream.Close();
+    //    writeStream.Close();
+    //}
+}
 
 
