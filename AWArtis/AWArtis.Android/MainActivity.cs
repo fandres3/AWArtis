@@ -12,6 +12,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Plugin.Permissions;
 
+
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
 
 namespace AWArtis.Droid
@@ -34,6 +35,7 @@ namespace AWArtis.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             LoadApplication(new App());
+
         }
 
         // https://docs.microsoft.com/en-us/xamarin/android/data-cloud/data-access/using-data-in-an-app
@@ -46,7 +48,7 @@ namespace AWArtis.Droid
         //   FileStream writeStream = new FileStream(dbFile, FileMode.OpenOrCreate, FileAccess.Write);
         //   ReadWriteStream(s, writeStream);
         // }
-      
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, 
             Permission[] grantResults) {
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode,

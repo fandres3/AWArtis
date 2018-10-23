@@ -13,14 +13,24 @@ namespace AWArtis
 		{
 			InitializeComponent();
 
-
+            IniciaSettings();
 
             //MainPage = new MainPage();
             //MainPage = new Views.ArticusPage();
             MainPage = new NavigationPage(new MainPage());
         }
 
-		protected override void OnStart ()
+        private void IniciaSettings()
+        {
+            if (!Application.Current.Properties.ContainsKey("CaminoAFichero"))
+            {
+                // Settings Generales
+                Application.Current.Properties["CaminoAFichero"] = "/storage/emulated/0/AW/Gascon";
+                Application.Current.Properties["Fichero"] = "AWBD1.DB3";
+            }
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
