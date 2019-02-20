@@ -19,19 +19,11 @@ namespace AWArtis.Services
         public ObservableCollection<Articu> Articus { get; set; }
         public IEnumerable<Articu> SeleccionArticus;
         public int CuantosArticus;
+
         public ArticusDataAccess()
         {
-            try
-            {
-                database =
-                  DependencyService.Get<IDatabaseConnection>().
-                  DbConnection();
-            }
-            catch (Exception)
-            {
-                //throw;
-                
-            }
+            Conecta();
+          
             try
             {
                 database.CreateTable<Articu>();
@@ -52,6 +44,23 @@ namespace AWArtis.Services
              
             }
         }
+
+        public void Conecta()
+        {
+            SQLiteAsyncConnection.ResetPool(); // https://chrisriesgo.com/sqlite-net-async-connections-keep-it-clean/
+            try
+            {
+                database =
+                  DependencyService.Get<IDatabaseConnection>().
+                  DbConnection();
+            }
+            catch (Exception)
+            {
+                //throw;
+
+            }
+        }
+
         public void AddNewArticu()
         {
             this.Articus.
@@ -88,8 +97,10 @@ namespace AWArtis.Services
         {
             lock (collisionLock)
             {
+                if (codigo == null) return null;
                 if (codigo != "")
                 {
+                    codigo = codigo.Replace('*', '%');
                     SeleccionArticus = database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_cod LIKE '" + codigo + "%' OR Art_cod1 LIKE '" + codigo + "%' ORDER BY Art_cod").AsEnumerable();
@@ -100,6 +111,8 @@ namespace AWArtis.Services
 
                 if (descripcion != "")
                 {
+                    if (descripcion == null) return null;
+                    descripcion = descripcion.Replace('*', '%');
                     SeleccionArticus = database.
    Query<Articu>
    ("SELECT * FROM Articu where Art_des LIKE '" + descripcion + "%' ORDER BY Art_des").AsEnumerable();

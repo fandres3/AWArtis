@@ -129,6 +129,8 @@ namespace AWArtis
                     }
 
                 }
+                // 29-11-18 Antes la conexión se hacía sólo una única vez al lanzar la app
+                // Ahora se hace cada vez que busca artículo para forzar a leer la bd que puede haber cambiado
                 try
                 {
                     dataAccess = new ArticusDataAccess();
@@ -141,7 +143,6 @@ namespace AWArtis
 
                 busy = true;
             }
-
 
             if (busy) await Buscar();
         }
@@ -225,8 +226,9 @@ namespace AWArtis
         // Busca por codigo o descripción 
         async private Task Buscar()
         {
+            dataAccess.Conecta();
 
-            SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
+                    SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
             if (SeleccionArticus != null)
             {
                 var z = SeleccionArticus.Count();
