@@ -20,6 +20,7 @@ namespace AWArtis.Models
         }
 
         private string _art_cod;
+        [Indexed]
         public string Art_cod {
             get { return _art_cod; }
             set
@@ -30,7 +31,7 @@ namespace AWArtis.Models
         }
 
         private string _art_des;
-        [MaxLength(50)]
+        [Indexed, MaxLength(50)]
         public string Art_des
         {
             get { return _art_des; }

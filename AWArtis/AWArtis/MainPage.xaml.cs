@@ -228,7 +228,7 @@ namespace AWArtis
         {
             dataAccess.Conecta();
 
-                    SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
+            SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
             if (SeleccionArticus != null)
             {
                 var z = SeleccionArticus.Count();
