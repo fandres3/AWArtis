@@ -7,6 +7,9 @@
      
     <StackLayout>
         <StackLayout Margin="0,50,0,10">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
             <Image Source="logogascon.png"></Image>
         </StackLayout>
 
@@ -28,7 +31,12 @@
             <Button x:Name="BtnLeerCodigo" FontSize="Large"  Image="baseline_camera_alt_black_48.png" BackgroundColor="Transparent" 
            HorizontalOptions="CenterAndExpand"
            VerticalOptions="CenterAndExpand" Clicked="btnLeerCodigo_Clicked" ></Button>
-              </StackLayout>
+        </StackLayout>
+        <StackLayout>
+            <Label x:Name="FechaDB" FontSize="Small" 
+                HorizontalOptions="CenterAndExpand"
+           VerticalOptions="End" ></Label>
+        </StackLayout>
     </StackLayout>
     
     <ContentPage.ToolbarItems>

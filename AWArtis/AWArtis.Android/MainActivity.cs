@@ -11,7 +11,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Plugin.Permissions;
-
+using AWArtis.Models;
 
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
 
@@ -20,6 +20,9 @@ namespace AWArtis.Droid
     [Activity(Label = "AWArtis", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        //private MyPathObserver myFileObserver;
+        //static FileObserverEvents _Events = (FileObserverEvents.Modify);
+
         protected override void OnCreate(Bundle bundle)
         {
             AppCenter.Start("1a8a8216-5f7b-4dc1-ab4b-a84baebef54a",
@@ -35,9 +38,33 @@ namespace AWArtis.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             LoadApplication(new App());
+ 
 
         }
 
+        //protected override void OnStart()
+        //{
+        //    base.OnStart();
+        //    string pathToWatch = App.Current.Properties["CaminoAFichero"] as string;
+        //    string fichero = Path.Combine(pathToWatch, App.Current.Properties["Fichero"] as string);
+
+        //    GlobalVariables._Camino = App.Current.Properties["CaminoAFichero"] as string;
+        //    GlobalVariables._Fichero = App.Current.Properties["Fichero"] as string;
+        //    pathToWatch = Path.Combine(pathToWatch, fichero);
+
+        //    myFileObserver = new MyPathObserver(pathToWatch);
+
+        //    myFileObserver.StartWatching(); // and StopWatching () when you are done...
+        //    //Toast toast =Toast.MakeText(this.BaseContext, "vigilando", ToastLength.Long);
+        //    //toast.Show();
+        //}
+        //protected override void OnDestroy()
+        //{
+        //    base.OnDestroy();
+        //    myFileObserver.StopWatching();
+        //}
+
+        
         // https://docs.microsoft.com/en-us/xamarin/android/data-cloud/data-access/using-data-in-an-app
         //var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
         // Console.WriteLine("Data path:" + Database.DatabaseFilePath);
@@ -48,6 +75,7 @@ namespace AWArtis.Droid
         //   FileStream writeStream = new FileStream(dbFile, FileMode.OpenOrCreate, FileAccess.Write);
         //   ReadWriteStream(s, writeStream);
         // }
+
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, 
             Permission[] grantResults) {

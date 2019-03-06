@@ -13,5 +13,7 @@ namespace AWArtis.Models
         public static String _Camino;
         public static String _Fichero;
         public static String _FileName;
+
+        public static String _FechaDB;
     }
 }

@@ -189,6 +189,7 @@ namespace AWArtis.Services
             this.Articus = new ObservableCollection<Articu>
               (database.Table<Articu>());
         }
+
     }
 }
 

@@ -147,6 +147,23 @@ namespace AWArtis
             if (busy) await Buscar();
         }
 
+
+        void OnTapped(object sender, EventArgs e)
+        {
+            var Camino = App.Current.Properties["CaminoAFichero"] as string;
+            var Fichero = App.Current.Properties["Fichero"] as string;
+            Fichero = Path.Combine(Camino, Fichero);
+
+            InfoFechaHoraFichero(Fichero);
+        }
+
+        private void InfoFechaHoraFichero(string fichero)
+        {
+            FileInfo fi = new FileInfo(fichero);
+            var lastmodified = fi.LastWriteTime;
+            FechaDB.Text = lastmodified.ToString("dd-MM-yyyy HH:MM:ss");
+        }
+
         async void btnLeerCodigo_Clicked(object sender, EventArgs e)
         {
 
@@ -209,6 +226,7 @@ namespace AWArtis
                     arg = null;
                 }
             });
+
         }
 
         async private void zz(String barcode)
