@@ -150,18 +150,37 @@ namespace AWArtis
 
         void OnTapped(object sender, EventArgs e)
         {
-            var Camino = App.Current.Properties["CaminoAFichero"] as string;
-            var Fichero = App.Current.Properties["Fichero"] as string;
-            Fichero = Path.Combine(Camino, Fichero);
+            // Pulsando sobre el logotipo aparece la fecha de actualización de la BD
+            // FECHAMOD se actualiza a cada modificación / generacion de fichero desde aniwin.net
+            // Una vez que el fichero se ha sincronizado, ésta será la fecha que se mostrará como fecha de
+            // última modificación de la bd
 
-            InfoFechaHoraFichero(Fichero);
-        }
+            ArticusDataAccess dataAccessFmod;
+            GlobalVariables._Camino = App.Current.Properties["CaminoAFichero"] as string;
+            GlobalVariables._Fichero = App.Current.Properties["Fichero"] as string;
+            GlobalVariables._FileName = Path.Combine(GlobalVariables._Camino, GlobalVariables._Fichero);
 
-        private void InfoFechaHoraFichero(string fichero)
-        {
-            FileInfo fi = new FileInfo(fichero);
-            var lastmodified = fi.LastWriteTime;
-            FechaDB.Text = lastmodified.ToString("dd-MM-yyyy HH:MM:ss");
+            try
+            {
+                dataAccessFmod = new ArticusDataAccess();
+
+            }
+            catch (Exception)
+            {
+                return;
+
+            }
+
+            dataAccessFmod.Conecta();
+
+            SeleccionArticus = dataAccessFmod.GetFilteredArticus("FECHAMOD", "");
+            var z = SeleccionArticus.Count();
+            if (z > 0)
+            {
+                Articu art = SeleccionArticus.FirstOrDefault();
+                FechaDB.Text = art.Art_des;
+            }
+
         }
 
         async void btnLeerCodigo_Clicked(object sender, EventArgs e)
@@ -187,8 +206,6 @@ namespace AWArtis
         {
             entryDescripcion.Text = "";
         }
-
-
 
         async private void OnToolbarItemClicked(object sender, EventArgs args)
         {
@@ -227,6 +244,9 @@ namespace AWArtis
                 }
             });
 
+            GlobalVariables._Camino = App.Current.Properties["CaminoAFichero"] as string;
+            GlobalVariables._Fichero = App.Current.Properties["Fichero"] as string;
+            GlobalVariables._FileName = Path.Combine(GlobalVariables._Camino, GlobalVariables._Fichero);
         }
 
         async private void zz(String barcode)
@@ -244,6 +264,7 @@ namespace AWArtis
         // Busca por codigo o descripción 
         async private Task Buscar()
         {
+            if (dataAccess == null) dataAccess = new ArticusDataAccess();
             dataAccess.Conecta();
 
             SeleccionArticus = dataAccess.GetFilteredArticus(entryCodigo.Text, entryDescripcion.Text);
